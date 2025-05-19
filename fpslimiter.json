@@ -3,7 +3,7 @@
   "Name": "fps limiter",
   "InternalName": "fpslimiter",
   "AssemblyVersion": "24.7.7.0",
-  "Description": "Cap your fps",
+  "Description": "프레임을 제한하세요",
   "ApplicableVersion": "any",
   "RepoUrl": "https://github.com/maributt/FPSLimiter",
   "LoadRequiredState": 0,

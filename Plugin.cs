@@ -60,7 +60,7 @@ namespace FPSLimiter
 
             Svc.Commands.AddHandler(Cmd, new CommandInfo(OnCmd)
             {
-                HelpMessage = "프레임 제한 설정 - /fps # [bg|all]",
+                HelpMessage = "플러그인 창 열기\n/fps # → 최대 프레임 값 설정\n/fps # bg → 최소 프레임 값 설정\n/fps # all → 모든 프레임 값 설정",
                 ShowInHelp = true
             });
             
@@ -154,11 +154,11 @@ namespace FPSLimiter
                     {
                         Message = new SeString(new List<Payload>()
                         {
-                            new TextPayload("Your background FPS is now capped to "),
+                            new TextPayload("최소 프레임이 "),
                             new UIGlowPayload((ushort)551),
                             new TextPayload(settings.FpsCapUnfocused.ToString()),
                             new UIGlowPayload(0),
-                            new TextPayload(".")
+                            new TextPayload("으로 설정되었습니다.")
                         })
                     });
                 }
@@ -170,11 +170,11 @@ namespace FPSLimiter
                     {
                         Message = new SeString(new List<Payload>()
                         {
-                            new TextPayload("Your background FPS and FPS are now capped to "),
+                            new TextPayload("최대/최소 프레임이 "),
                             new UIGlowPayload((ushort)541),
                             new TextPayload(settings.FpsCapUnfocused.ToString()),
                             new UIGlowPayload(0),
-                            new TextPayload(".")
+                            new TextPayload("으로 설정되었습니다.")
                         })
                     });
                 }
@@ -193,11 +193,11 @@ namespace FPSLimiter
             {
                 Message = new SeString(new List<Payload>()
                 {
-                    new TextPayload("Your FPS is now capped to "),
+                    new TextPayload("최대 프레임이 "),
                     new UIGlowPayload(Alternate ? (ushort)566 : (ushort)540),
                     new TextPayload(settings.FpsCap.ToString()),
                     new UIGlowPayload(0),
-                    new TextPayload(".")
+                    new TextPayload("으로 설정되었습니다.")
                 })
             });
 
