@@ -60,7 +60,7 @@ namespace FPSLimiter
 
             Svc.Commands.AddHandler(Cmd, new CommandInfo(OnCmd)
             {
-                HelpMessage = "sets your maximum fps - /fps # [bg|all]",
+                HelpMessage = "프레임 제한 설정 - /fps # [bg|all]",
                 ShowInHelp = true
             });
             
@@ -79,9 +79,7 @@ namespace FPSLimiter
         {
             if (!ShowConfig)
                 return;
-            ImGui.Begin("fps limiter config##configWindow", ref ShowConfig, ImGuiWindowFlags.AlwaysAutoResize | ImGuiWindowFlags.NoResize);
-
-            ImGui.Text("- fps caps");
+            ImGui.Begin("fps limiter##configWindow", ref ShowConfig, ImGuiWindowFlags.AlwaysAutoResize | ImGuiWindowFlags.NoResize);
             if (ImGui.Checkbox("##fpslimiterEnabled", ref settings.FpsCapEnabled))
             {
                 pluginInterface.SavePluginConfig(settings);
@@ -89,12 +87,12 @@ namespace FPSLimiter
             if (ImGui.IsItemHovered())
             {
                 ImGui.BeginTooltip();
-                ImGui.Text("enable/disable foreground fps cap");
+                ImGui.Text("최대 프레임");
                 ImGui.EndTooltip();
             }
             ImGui.SameLine();
-            ImGui.SetNextItemWidth(95);
-            if (ImGui.InputInt("foreground##fpscap", ref settings.FpsCap, 1, 5))
+            ImGui.SetNextItemWidth(115);
+            if (ImGui.InputInt("##fpscap", ref settings.FpsCap, 1, 5))
             {
                 if (settings.FpsCap < 5) settings.FpsCap = 5; // silly idea protection
                 pluginInterface.SavePluginConfig(settings);
@@ -107,30 +105,34 @@ namespace FPSLimiter
             if (ImGui.IsItemHovered())
             {
                 ImGui.BeginTooltip();
-                ImGui.Text("enable/disable background fps cap");
+                ImGui.Text("최소 프레임");
                 ImGui.EndTooltip();
             }
             ImGui.SameLine();
-            ImGui.SetNextItemWidth(95);
-            if (ImGui.InputInt("background##fpscapunfocused", ref settings.FpsCapUnfocused, 1, 1))
+            ImGui.SetNextItemWidth(115);
+            if (ImGui.InputInt("##fpscapunfocused", ref settings.FpsCapUnfocused, 1, 1))
             {
                 if (settings.FpsCapUnfocused < 1) settings.FpsCapUnfocused = 1;
                 pluginInterface.SavePluginConfig(settings);
             }
-            ImGui.Text("- disable plugin when...");
-            ImGui.SameLine();
-            ImGui.TextDisabled("(?)");
-            if (ImGui.IsItemHovered())
+            if (ImGui.CollapsingHeader(""))
             {
-                ImGui.BeginTooltip();
-                ImGui.TextDisabled("allowing your game more resources during load times generally makes the transitions faster");
-                ImGui.TextDisabled("you may want to use the \"logging in\" setting if a plugin requires a certain framerate to interact with the game on the character select screen");
-                ImGui.TextDisabled("you can use the \"zoning\" setting to have a generally faster loading experience while still capping your frames while playing");
-                ImGui.EndTooltip();
+                ImGui.Text("설정 값 무시");
+                ImGui.Checkbox("로그인##disableOnLogin", ref settings.DisableOnLogin);
+                if (ImGui.IsItemHovered())
+                {
+                    ImGui.BeginTooltip();
+                    ImGui.Text("타이틀, 캐릭터 선택, 캐릭터 커스터마이징 화면 등\n로그인 하기 전 모든 곳에서 프레임 제한 설정 값을 무시합니다.\n캐릭터 선택 창에서 일정 값 이상의 프레임레이트를 요구하는 플러그인의 원활한 작동에 필요할 수 있습니다.");
+                    ImGui.EndTooltip();
+                }
+                ImGui.Checkbox("지역 이동##disableOnZoning", ref settings.DisableOnZoning);
+                if (ImGui.IsItemHovered())
+                {
+                    ImGui.BeginTooltip();
+                    ImGui.Text("지역 이동 시 프레임 제한 설정 값을 무시합니다.\n로딩 속도가 조금이나마 빨라질 수 있습니다.");
+                    ImGui.EndTooltip();
+                }
             }
-            ImGui.Checkbox("...logging in##disableOnLogin", ref settings.DisableOnLogin);
-            ImGui.Checkbox("...zoning##disableOnZoning", ref settings.DisableOnZoning);
-            ImGui.End();
         }
 
         public void OnCmd(string command, string arg)

@@ -21,7 +21,7 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<DalamudLibPath>$(appdata)\XIVLauncher\addon\Hooks\dev\</DalamudLibPath>
+		<DalamudLibPath>$(appdata)\XIVLauncherKR\addon\Hooks\dev\</DalamudLibPath>
 		<AssemblyName>fpslimiter</AssemblyName>
 		<RootNamespace>fpslimiter</RootNamespace>
 		<RepoPath>..\xivplugins\plugins\$(AssemblyName)</RepoPath>
