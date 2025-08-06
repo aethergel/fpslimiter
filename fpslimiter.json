@@ -2,7 +2,7 @@
   "Author": "maributt",
   "Name": "fps limiter",
   "InternalName": "fpslimiter",
-  "AssemblyVersion": "1.0.0.0",
+  "AssemblyVersion": "1.0.1.0",
   "Description": "프레임을 제한하세요",
   "ApplicableVersion": "any",
   "RepoUrl": "https://github.com/maributt/FPSLimiter",
