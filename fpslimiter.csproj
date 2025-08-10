@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Dalamud.NET.Sdk/13.0.0">
 	<PropertyGroup>
 		<Authors>maributt</Authors>
-		<Version>1.0.1.0</Version>
+		<Version>1.0.2.0</Version>
 	</PropertyGroup>
 
 	<PropertyGroup>
@@ -44,7 +44,7 @@
 	</Target>
 
 	<ItemGroup>
-		<PackageReference Include="DalamudPackager" Version="12.0.0" />
+		<PackageReference Include="DalamudPackager" Version="133.0.0" />
 		<Reference Include="FFXIVClientStructs">
 			<HintPath>$(DalamudLibPath)FFXIVClientStructs.dll</HintPath>
 			<Private>false</Private>
@@ -55,10 +55,6 @@
 		</Reference>
 		<Reference Include="Dalamud">
 			<HintPath>$(DalamudLibPath)Dalamud.dll</HintPath>
-			<Private>false</Private>
-		</Reference>
-		<Reference Include="ImGui.NET">
-			<HintPath>$(DalamudLibPath)ImGui.NET.dll</HintPath>
 			<Private>false</Private>
 		</Reference>
 		<Reference Include="ImGuiScene">

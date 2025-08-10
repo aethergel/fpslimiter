@@ -10,7 +10,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text.Json.Serialization;
 using System.Threading;
-using ImGuiNET;
+using Dalamud.Bindings.ImGui;
 using Dalamud.Plugin.Services;
 
 namespace FPSLimiter
